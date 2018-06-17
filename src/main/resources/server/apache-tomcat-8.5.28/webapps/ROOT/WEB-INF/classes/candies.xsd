@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/candies"
+        xmlns:tns="http://www.example.com/candies"
+        elementFormDefault="qualified">
+    <element name="candies">
+        <complexType>
+            <sequence>
+                <!--<element name="candy" type="tns:Candy" minOccurs="2"
+                         maxOccurs="unbounded" />-->
+                <element ref="tns:deliciousThing" minOccurs="2" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="deliciousThing" type="tns:DeliciousThing" abstract="true"/>
+    <element name="candy" type="tns:Candy" substitutionGroup="tns:deliciousThing"/>
+    <element name="soda" type="tns:Soda" substitutionGroup="tns:deliciousThing"/>
+    <complexType name="DeliciousThing">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="energy">
+                <simpleType>
+                    <restriction base="string">
+                        <pattern value="([1-9]?[0-9]?[0-9][0-9])(\.)([1-9]?[1-9])(kcal)"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="ingredients" type="tns:Ingredients"/>
+            <element name="value" type="tns:Value"/>
+            <element name="production" type="string"/>
+        </sequence>
+        <attribute name="thingID" type="tns:ThingID" use="required"/>
+    </complexType>
+    <complexType name="Candy">
+        <complexContent>
+            <extension base="tns:DeliciousThing">
+                <attribute name="candyType" use="required">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="candyBar"/>
+                            <enumeration value="lollipop"/>
+                            <enumeration value="jelly"/>
+                            <enumeration value="other"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+        <!--<sequence>
+            <element name="name" type="string"/>
+            <element name="energy" type="string">
+                <simpleType>
+                    <restriction base="string">
+                        <pattern value="([1-9]?[1-9])(\\.)([1-9]?[1-9])(g)"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="ingredients" type="tns:Ingredients"/>
+            <element name="value" type="tns:Value"/>
+            <element name="production" type="string"/>
+        </sequence>-->
+    </complexType>
+    <complexType name="Soda">
+        <complexContent>
+            <extension base="tns:DeliciousThing">
+                <sequence>
+                    <element name="minAmount">
+                        <simpleType>
+                            <restriction base="string">
+                                <pattern value="([0-5])(\.?)([1-9]?[1-9]?)(ml|l)"/>
+                            </restriction>
+                        </simpleType>
+                    </element>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="Ingredients">
+        <sequence>
+            <element name="water" type="tns:IngredientsType"/>
+            <element name="fructose" type="tns:IngredientsType"/>
+            <element name="other" type="tns:IngredientsType"/>
+        </sequence>
+    </complexType>
+    <complexType name="Value">
+        <sequence>
+            <element name="proteins" type="tns:ValueType"/>
+            <element name="fats" type="tns:ValueType"/>
+            <element name="carbohydrates" type="tns:ValueType"/>
+        </sequence>
+    </complexType>
+    <simpleType name="ValueType">
+        <restriction base="string">
+            <pattern value="([1-9]?[1-9])(\.)([1-9]?[1-9])(g)"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="IngredientsType">
+        <restriction base="string">
+            <pattern value="([1-9][0-9]?[0-9]?)(\.)([1-9]?[1-9])(mg)"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="ThingID">
+        <restriction base="ID">
+            <pattern value="\w{2,5}"/>
+        </restriction>
+    </simpleType>
+</schema>

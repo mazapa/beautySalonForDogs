@@ -1,0 +1,148 @@
+2018-03-11 12:43:03 [http-nio-8080-exec-5] ERROR by.ryazantseva.xml.controller.ControllerRead Catching
+by.ryazantseva.xml.exception.ParserException: can't validate uploaded xml
+	at by.ryazantseva.xml.controller.ControllerRead.parseXML(ControllerRead.java:86) ~[classes/:?]
+	at by.ryazantseva.xml.controller.ControllerRead.processReq(ControllerRead.java:57) [classes/:?]
+	at by.ryazantseva.xml.controller.ControllerRead.doPost(ControllerRead.java:42) [classes/:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) [servlet-api.jar:?]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) [servlet-api.jar:?]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [catalina.jar:8.5.28]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) [tomcat-websocket.jar:8.5.28]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [catalina.jar:8.5.28]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [catalina.jar:8.5.28]
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650) [catalina.jar:8.5.28]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [catalina.jar:8.5.28]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [catalina.jar:8.5.28]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-coyote.jar:8.5.28]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-coyote.jar:8.5.28]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-coyote.jar:8.5.28]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459) [tomcat-coyote.jar:8.5.28]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-coyote.jar:8.5.28]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_121]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_121]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-util.jar:8.5.28]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_121]
+2018-04-14 19:07:19 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:07:21 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:07:22 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:07:23 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:07:24 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:07:25 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:05 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:07 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:08 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:08 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:08 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:08 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:08 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:09 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:10 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:11 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:11 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:25:12 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:20 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:22 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:23 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:32 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:35 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:38 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:42 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:42 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:44 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:45 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:46 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:47 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:47 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:48 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:48 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:48 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:49 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:49 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:49 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:49 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:27:50 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:31:53 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:04 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:07 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:10 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:13 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:16 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:21 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:25 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:29 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:32 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:35 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:39 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:42 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:45 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:53 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:53 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:54 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:54 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:54 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:54 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:54 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:55 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:56 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:57 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:57 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:57 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:57 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:58 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:58 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:58 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:32:58 [http-nio-8080-exec-7] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:54 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:56 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:56 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:57 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:57 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:57 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:57 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:58 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:59 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 19:42:59 [http-nio-8080-exec-6] ERROR by.ryazantseva.salon.connection.ConnectionPool Cant create connection!
+2018-04-14 20:42:49 [http-nio-8080-exec-1] ERROR by.ryazantseva.salon.command.ActionFactory Wrong command!
+2018-04-16 23:41:26 [http-nio-8080-exec-9] ERROR by.ryazantseva.salon.logic.RegistrationLogic input mistake!
+2018-04-16 23:56:39 [http-nio-8080-exec-10] ERROR by.ryazantseva.salon.logic.RegistrationLogic input mistake!
+2018-04-18 21:12:22 [http-nio-8080-exec-2] ERROR by.ryazantseva.salon.logic.RegistrationLogic input mistake!
