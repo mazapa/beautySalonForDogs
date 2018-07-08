@@ -14,6 +14,11 @@
 Hello!
 <input type="button" value="change password" onClick='location.href="jsp/changePasswordPage.jsp"'>
 <input type="button" value="change info" onClick='location.href="jsp/changeInformationPage.jsp"'>
-
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="sign_out">
+    <br>
+    <input type="submit" value="sign out">
+    <br>
+</form>
 </body>
 </html>

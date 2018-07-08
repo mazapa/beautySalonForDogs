@@ -5,7 +5,7 @@
 </head>
 <body>
 <form action="/Controller" method="post">
-    <input type="hidden" name="command" value="Login">
+    <input type="hidden" name="command" value="sign_in">
     Login:<br>
     <input type="text" name="login" value=""><br>
     Password:<br>

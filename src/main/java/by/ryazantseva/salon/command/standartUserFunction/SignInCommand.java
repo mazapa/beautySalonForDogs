@@ -8,13 +8,13 @@ import by.ryazantseva.salon.logic.LoginLogic;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class LoginCommand implements Command {
+public class SignInCommand implements Command {
     private static final String LOGIN_PARAMETER = "login";
     private static final String PASSWORD = "password";
     private static final String CURRENT_SESSION_USER = "currentSessionUser";
 
     public String execute(HttpServletRequest request) {
-        String page = PageConstant.LOGIN_PAGE;
+        String page = PageConstant.SIGN_IN_PAGE;
         LoginLogic logic = new LoginLogic();
         String login = request.getParameter(LOGIN_PARAMETER);
         String password = request.getParameter(PASSWORD);

@@ -2,13 +2,17 @@ package by.ryazantseva.salon.command;
 
 import by.ryazantseva.salon.command.standartUserFunction.ChangeInformationCommand;
 import by.ryazantseva.salon.command.standartUserFunction.ChangePasswordCommand;
-import by.ryazantseva.salon.command.standartUserFunction.LoginCommand;
+import by.ryazantseva.salon.command.standartUserFunction.SignInCommand;
 import by.ryazantseva.salon.command.standartUserFunction.RegistrationCommand;
 
 public enum  CommandType {
-    LOGIN {
+    SIGN_IN {
         {
-            this.command = new LoginCommand();
+            this.command = new SignInCommand();
+        }
+    },SIGN_OUT {
+        {
+            this.command = new SignInCommand();
         }
     },
    CHANGE_PASSWORD {

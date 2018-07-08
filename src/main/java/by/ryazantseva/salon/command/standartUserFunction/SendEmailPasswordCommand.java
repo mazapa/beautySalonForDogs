@@ -8,7 +8,7 @@ import by.ryazantseva.salon.logic.ChangePasswordLogic;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class ChangePasswordCommand implements Command {
+public class SendEmailPasswordCommand implements Command {
 
     private static final String OLD_PASSWORD = "oldPassword";
     private static final String PASSWORD = "password";
