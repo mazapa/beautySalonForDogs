@@ -12,5 +12,8 @@
 </head>
 <body>
 Hello!
+<input type="button" value="change password" onClick='location.href="jsp/changePasswordPage.jsp"'>
+<input type="button" value="change info" onClick='location.href="jsp/changeInformationPage.jsp"'>
+
 </body>
 </html>

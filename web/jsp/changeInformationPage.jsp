@@ -6,23 +6,17 @@
 </head>
 <body>
 <form action="/Controller" method="post">
-    <input type="hidden" name="command" value="registration">
+    <input type="hidden" name="command" value="change_information">
     Name:<br>
-    <input type="text" name="name" value=""><br>
+    <input type="text" name="name" value="Ульяна"><br>
     Surname:<br>
     <input type="text" name="surname" value=""><br>
     Email:<br>
     <input type="text" name="email" value=""><br>
     Phone Number:<br>
     <input type="text" name="phoneNumber" value=""><br>
-    Login:<br>
-    <input type="text" name="login" value=""><br>
-    Password:<br>
-    <input type="password" name="password" value=""><br>
-    Repeat password:<br>
-    <input type="password" name="repeatPassword" value=""><br>
     <br>
-    <input type="submit" value="registration">
+    <input type="submit" value="change information">
     <br>
 </form>
 <form>

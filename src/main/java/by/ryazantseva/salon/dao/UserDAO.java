@@ -17,72 +17,18 @@ public class UserDAO extends AbstractDAO<User> {
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE login = ? AND password = SHA1(?)";
     private static final String SQL_ADD_USER =
             "INSERT INTO person (name, surname, email, phone_number, login, password, role) VALUES(?,?,?,?,?,SHA1(?),?)";
+     private static final String SQL_UPDATE_USER =
+            "UPDATE person SET name = ?, surname = ?, email = ?, phone_number = ?, password = SHA1(?), role = ? WHERE login = ?";
     private static final String SQL_CHECK_UNIQUE_LOGIN =
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE login = ? ";
     private static final String SQL_CHECK_UNIQUE_EMAIL =
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE email = ? ";
+    private static final String SQL_CHECK_UNIQUE_PHONE_NUMBER =
+            "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE phone_number = ? ";
 
-    public boolean checkUniqueLogin(String login) {
-        List<User> userList = new LinkedList<>();
-        PreparedStatement prepareStatement = getPrepareStatement(SQL_CHECK_UNIQUE_LOGIN);
-        try {
-            prepareStatement.setString(1, login);
-            ResultSet resultSet = prepareStatement.executeQuery();
-            while (resultSet.next()) {
-                userList.add(getInfAboutUser(resultSet));
-            }
-            commitStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (prepareStatement != null) {
-                closeStatement(prepareStatement);
-            }
-        }
-        return userList.isEmpty();
-    }
-    public boolean checkUniqueEmail(String email) {
-        List<User> userList = new LinkedList<>();
-        PreparedStatement prepareStatement = getPrepareStatement(SQL_CHECK_UNIQUE_EMAIL);
-        try {
-            prepareStatement.setString(1, email);
-            ResultSet resultSet = prepareStatement.executeQuery();
-            while (resultSet.next()) {
-                userList.add(getInfAboutUser(resultSet));
-            }
-            commitStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (prepareStatement != null) {
-                closeStatement(prepareStatement);
-            }
-        }
-        return userList.isEmpty();
-    }
 
-    public void addUser(String login, String password, String name, String surname, String email, String phoneNumber, String role) {
-        PreparedStatement prepareStatement = getPrepareStatement(SQL_ADD_USER);
-        try {
-            prepareStatement.setString(1, name);
-            prepareStatement.setString(2, surname);
-            prepareStatement.setString(3, email);
-            prepareStatement.setString(4, phoneNumber);
-            prepareStatement.setString(5, login);
-            prepareStatement.setString(6, password);
-            prepareStatement.setString(7, role);
-            prepareStatement.executeUpdate();
-            commitStatement();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            if (prepareStatement != null) {
-                closeStatement(prepareStatement);
-            }
-        }
-    }
 
-    public boolean checkLoginAndPass(String login, String password) {
+    public User findUser(String login, String password) {
         List<User> userList = new LinkedList<>();
         PreparedStatement prepareStatement = getPrepareStatement(SQL_SELECT_USER_BY_LOGIN_AND_PASS);
         try {
@@ -90,7 +36,7 @@ public class UserDAO extends AbstractDAO<User> {
             prepareStatement.setString(2, password);
             ResultSet resultSet = prepareStatement.executeQuery();
             while (resultSet.next()) {
-                userList.add(getInfAboutUser(resultSet));
+                userList.add(getUserFromDB(resultSet));
             }
             commitStatement();
         } catch (SQLException e) {
@@ -100,11 +46,16 @@ public class UserDAO extends AbstractDAO<User> {
                 closeStatement(prepareStatement);
             }
         }
-        return !userList.isEmpty();
+        if(!userList.isEmpty()){
+            return userList.get(0);
+        }
+
+        return null;
 
     }
 
-    private User getInfAboutUser(ResultSet resultSet) {
+
+    private User getUserFromDB(ResultSet resultSet) {
         User user = new User();
         try {
             user.setPersonId(resultSet.getInt("id_person"));
@@ -121,15 +72,85 @@ public class UserDAO extends AbstractDAO<User> {
         return user;
     }
 
-    @Override
-    public User update(User entity) {
-        return null;
+    public boolean checkUniqueLogin(String data) {
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_CHECK_UNIQUE_LOGIN);
+        return checkUniqueData(prepareStatement,data);
+
+    }
+    public boolean checkUniqueEmail(String data) {
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_CHECK_UNIQUE_EMAIL);
+        return checkUniqueData(prepareStatement,data);
+    }
+
+    public boolean checkUniquePhoneNumber(String data) {
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_CHECK_UNIQUE_PHONE_NUMBER);
+        return checkUniqueData(prepareStatement,data);
+    }
+
+    private boolean checkUniqueData(PreparedStatement prepareStatement,String data){
+        List<User> userList = new LinkedList<>();
+        try {
+            prepareStatement.setString(1, data);
+            ResultSet resultSet = prepareStatement.executeQuery();
+            while (resultSet.next()) {
+                userList.add(getUserFromDB(resultSet));
+            }
+            commitStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (prepareStatement != null) {
+                closeStatement(prepareStatement);
+            }
+        }
+        return userList.isEmpty();
     }
 
     @Override
-    public boolean add(User entity) {
-        return false;
+    public void add(User user) {
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_ADD_USER);
+        try {
+            prepareStatement.setString(1, user.getName());
+            prepareStatement.setString(2, user.getSurname());
+            prepareStatement.setString(3, user.getEmail());
+            prepareStatement.setString(4, user.getPhoneNumber());
+            prepareStatement.setString(5, user.getLogin());
+            prepareStatement.setString(6, user.getPassword());
+            prepareStatement.setString(7, user.getRole());
+            prepareStatement.executeUpdate();
+            commitStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (prepareStatement != null) {
+                closeStatement(prepareStatement);
+            }
+        }
     }
+
+    @Override
+    public void update(User user) {
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_UPDATE_USER);
+        try {
+            prepareStatement.setString(1, user.getName());
+            prepareStatement.setString(2, user.getSurname());
+            prepareStatement.setString(3, user.getEmail());
+            prepareStatement.setString(4, user.getPhoneNumber());
+            prepareStatement.setString(5, user.getPassword());
+            prepareStatement.setString(6, user.getRole());
+            prepareStatement.setString(7, user.getLogin());
+            prepareStatement.executeUpdate();
+            commitStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (prepareStatement != null) {
+                closeStatement(prepareStatement);
+            }
+        }
+
+    }
+
 
     @Override
     public boolean delete(User entity) {

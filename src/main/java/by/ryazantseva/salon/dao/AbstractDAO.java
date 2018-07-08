@@ -21,8 +21,8 @@ public abstract class AbstractDAO<Type extends Entity> {
         connection = ConnectionPool.getInstance().getConnection();
     }
 
-    public abstract Type update(Type entity);
-    public abstract boolean add(Type entity);
+    public abstract void update(Type entity);
+    public abstract void add(Type entity);
     public abstract boolean delete(Type entity);
     public abstract boolean create(Type entity);
 

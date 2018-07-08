@@ -1,16 +1,22 @@
 package by.ryazantseva.salon.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class User implements Entity{
+public class User implements Entity {
     private int personId;
     private String name;
     private String surname;
-    private String  email;
+    private String email;
     private String login;
     private String password;
-    private String role;
+    private String role = RoleType.USER.getRole();
     private String phoneNumber;
+
+    public String getRole() {
+        return role;
+    }
 
     public int getPersonId() {
         return personId;
@@ -71,6 +77,7 @@ public class User implements Entity{
     public void setRole(String role) {
         this.role = role;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,5 +98,6 @@ public class User implements Entity{
 
         return Objects.hash(getPersonId(), getName(), getSurname(), getEmail(), getLogin(), getPassword(), role, getPhoneNumber());
     }
+
 
 }
