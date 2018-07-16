@@ -17,7 +17,7 @@ public class RegistrationCommand implements Command {
     private static final String PASSWORD = "password";
     private static final String REPEAT_PASSWORD = "repeatPassword";
     private static final String USER = "user";
-    public static final String CURRENT_SESSION_USER = "currentSessionUser";
+    private static final String CURRENT_SESSION_USER = "currentSessionUser";
 
     public String execute(HttpServletRequest request) {
         String page = PageConstant.REGISTRATION_PAGE;

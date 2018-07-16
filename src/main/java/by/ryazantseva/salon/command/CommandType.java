@@ -1,9 +1,6 @@
 package by.ryazantseva.salon.command;
 
-import by.ryazantseva.salon.command.standartUserFunction.ChangeInformationCommand;
-import by.ryazantseva.salon.command.standartUserFunction.ChangePasswordCommand;
-import by.ryazantseva.salon.command.standartUserFunction.SignInCommand;
-import by.ryazantseva.salon.command.standartUserFunction.RegistrationCommand;
+import by.ryazantseva.salon.command.standartUserFunction.*;
 
 public enum  CommandType {
     SIGN_IN {
@@ -13,6 +10,14 @@ public enum  CommandType {
     },SIGN_OUT {
         {
             this.command = new SignInCommand();
+        }
+    },SEND_PASSWORD {
+        {
+            this.command = new SendEmailPasswordCommand();
+        }
+    },ADD_REVIEW {
+        {
+            this.command = new AddReviewCommand();
         }
     },
    CHANGE_PASSWORD {

@@ -7,4 +7,5 @@ public  class PageConstant
     public static final String REGISTRATION_PAGE = "/jsp/registrationPage.jsp";
     public static final String CHANGE_PASSWORD_PAGE = "/jsp/changePasswordPage.jsp";
     public static final String CHANGE_INFORMATION_PAGE = "/jsp/changeInformationPage.jsp";
+    public static final String ADD_REVIEW_PAGE = "/jsp/addReviewPage.jsp";
 }

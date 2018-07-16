@@ -18,15 +18,33 @@ public class UserDAO extends AbstractDAO<User> {
     private static final String SQL_ADD_USER =
             "INSERT INTO person (name, surname, email, phone_number, login, password, role) VALUES(?,?,?,?,?,SHA1(?),?)";
      private static final String SQL_UPDATE_USER =
-            "UPDATE person SET name = ?, surname = ?, email = ?, phone_number = ?, password = SHA1(?), role = ? WHERE login = ?";
+            "UPDATE person SET name = ?, surname = ?, email = ?, phone_number = ?, password = SHA1(?), role = ? WHERE id_person = ?";
     private static final String SQL_CHECK_UNIQUE_LOGIN =
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE login = ? ";
     private static final String SQL_CHECK_UNIQUE_EMAIL =
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE email = ? ";
     private static final String SQL_CHECK_UNIQUE_PHONE_NUMBER =
             "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE phone_number = ? ";
+    private static final String SQL_ADD_REVIEW =
+            "INSERT INTO review (review,reviewer) VALUES(?,?)";
 
 
+    public void addReview(User user, String review){
+        PreparedStatement prepareStatement = getPrepareStatement(SQL_ADD_REVIEW);
+        try {
+            prepareStatement.setInt(1, user.getPersonId());
+            prepareStatement.setString(2, review);
+            prepareStatement.executeUpdate();
+            commitStatement();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (prepareStatement != null) {
+                closeStatement(prepareStatement);
+            }
+        }
+
+    }
 
     public User findUser(String login, String password) {
         List<User> userList = new LinkedList<>();
@@ -49,9 +67,7 @@ public class UserDAO extends AbstractDAO<User> {
         if(!userList.isEmpty()){
             return userList.get(0);
         }
-
         return null;
-
     }
 
 
@@ -138,7 +154,7 @@ public class UserDAO extends AbstractDAO<User> {
             prepareStatement.setString(4, user.getPhoneNumber());
             prepareStatement.setString(5, user.getPassword());
             prepareStatement.setString(6, user.getRole());
-            prepareStatement.setString(7, user.getLogin());
+            prepareStatement.setInt(7, user.getPersonId());
             prepareStatement.executeUpdate();
             commitStatement();
         } catch (SQLException e) {

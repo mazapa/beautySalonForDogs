@@ -26,6 +26,7 @@ public class RegistrationLogic {
                 user.setSurname(surname);
                 user.setPhoneNumber(phoneNumber);
                 dao.add(user);
+                this.user = user;
                 return true;
             }
             logger.log(Level.ERROR, "Such login is used!");
