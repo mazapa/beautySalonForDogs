@@ -2,7 +2,7 @@ package by.ryazantseva.salon.entity;
 
 import java.util.Objects;
 
-public class User implements Entity {
+public class Service implements Entity {
     private String name;
     private String surname;
     private String email;
@@ -71,7 +71,7 @@ public class User implements Entity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
+        Service user = (Service) o;
         return  getPhoneNumber() == user.getPhoneNumber() &&
                 Objects.equals(getName(), user.getName()) &&
                 Objects.equals(getSurname(), user.getSurname()) &&

@@ -1,6 +1,6 @@
 package by.ryazantseva.salon.logic;
 
-import by.ryazantseva.salon.dao.UserDAO;
+import by.ryazantseva.salon.dao.impl.UserDao;
 import by.ryazantseva.salon.entity.User;
 import by.ryazantseva.salon.validation.EncryptPassword;
 import by.ryazantseva.salon.validation.InputUserDataValidation;
@@ -13,7 +13,7 @@ public class ChangePasswordLogic {
         if (user.getPassword().equals(oldPassword)) {
             if (InputUserDataValidation.checkPassword(newPassword) && InputUserDataValidation.checkPasswordEquals(newPassword, repeatNewPassword)) {
                 user.setPassword(newPassword);
-                UserDAO dao = new UserDAO();
+                UserDao dao = new UserDao();
                 dao.update(user);
                 this.user = user;
                 return true;

@@ -1,4 +1,4 @@
-package by.ryazantseva.salon.command.standartUserFunction;
+package by.ryazantseva.salon.command.user;
 
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
@@ -23,9 +23,9 @@ public class SignInCommand implements Command {
             User user = logic.getUser();
             session.setAttribute(CURRENT_SESSION_USER, user);
             page = PageConstant.WELCOME_PAGE;
-
+////////////////////////////
             System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
-
+///////////////////////////////
         }
         return page;
     }

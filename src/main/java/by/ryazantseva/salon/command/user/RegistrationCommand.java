@@ -1,4 +1,4 @@
-package by.ryazantseva.salon.command.standartUserFunction;
+package by.ryazantseva.salon.command.user;
 
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
@@ -34,9 +34,9 @@ public class RegistrationCommand implements Command {
             HttpSession session = request.getSession();
             session.setAttribute(CURRENT_SESSION_USER, user);
             page = PageConstant.WELCOME_PAGE;
-
+//////////////////////////
             System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
-
+///////////////////////////
         }
         return page;
     }

@@ -1,6 +1,6 @@
 package by.ryazantseva.salon.command;
 
-import by.ryazantseva.salon.command.standartUserFunction.*;
+import by.ryazantseva.salon.command.user.*;
 
 public enum  CommandType {
     SIGN_IN {

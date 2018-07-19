@@ -1,16 +1,14 @@
-package by.ryazantseva.salon.command.standartUserFunction;
+package by.ryazantseva.salon.command.service;
 
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
 import by.ryazantseva.salon.entity.User;
 import by.ryazantseva.salon.logic.AddReviewLogic;
-import by.ryazantseva.salon.logic.ChangeInformationLogic;
-import com.mysql.cj.jdbc.jmx.LoadBalanceConnectionGroupManager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class AddReviewCommand implements Command {
+public class GetFreeServiceTimeCommand implements Command {
     private static final String CURRENT_SESSION_USER = "currentSessionUser";
     public static final String REVIEW = "review";
 

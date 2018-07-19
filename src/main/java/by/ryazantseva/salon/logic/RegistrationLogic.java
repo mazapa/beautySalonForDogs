@@ -1,13 +1,11 @@
 package by.ryazantseva.salon.logic;
 
-import by.ryazantseva.salon.dao.UserDAO;
+import by.ryazantseva.salon.dao.impl.UserDao;
 import by.ryazantseva.salon.entity.User;
 import by.ryazantseva.salon.validation.InputUserDataValidation;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import javax.jws.soap.SOAPBinding;
 
 public class RegistrationLogic {
     private static Logger logger = LogManager.getLogger();
@@ -15,7 +13,7 @@ public class RegistrationLogic {
 
     public boolean addUser(String login, String password, String name, String surname, String email, String phoneNumber, String role, String repeatPass) {
         if (InputUserDataValidation.checkInput(login, password, name, surname, email, phoneNumber, repeatPass)) {
-            UserDAO dao = new UserDAO();
+            UserDao dao = new UserDao();
             if (dao.checkUniqueLogin(login) && dao.checkUniqueEmail(email) && dao.checkUniquePhoneNumber(phoneNumber)) {
                 User user = new User();
                 user.setRole(role);

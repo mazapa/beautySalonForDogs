@@ -1,8 +1,7 @@
 package by.ryazantseva.salon.logic;
 
-import by.ryazantseva.salon.dao.UserDAO;
+import by.ryazantseva.salon.dao.impl.UserDao;
 import by.ryazantseva.salon.entity.User;
-import by.ryazantseva.salon.validation.EncryptPassword;
 import by.ryazantseva.salon.validation.InputUserDataValidation;
 
 public class ChangeInformationLogic {
@@ -15,7 +14,7 @@ public class ChangeInformationLogic {
             user.setSurname(surname);
             user.setPhoneNumber(phoneNumber);
             user.setEmail(email);
-            UserDAO dao = new UserDAO();
+            UserDao dao = new UserDao();
             dao.update(user);
            // this.user = user;
             return true;

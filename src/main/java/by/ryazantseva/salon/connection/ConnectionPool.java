@@ -1,5 +1,6 @@
 package by.ryazantseva.salon.connection;
 
+import by.ryazantseva.salon.exception.ConnectionException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,17 +18,17 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ConnectionPool {
+    public static final int MIN_CONNECTION_SIZE = 1;
     private static Logger logger = LogManager.getLogger();
     private static final String PROPERTIES_POOL_SIZE = "poolSize";
     private static final String PROPERTIES_FILE_PATH = "properties/poolConfig.properties";
-    public static final String PROPERTIES_URL = "url";
-
+    private static final String PROPERTIES_URL = "url";
     private BlockingQueue<ProxyConnection> connections;
     private static AtomicBoolean created = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
-
     private static ConnectionPool connectionPool;
     private Properties properties;
+
 
     private ConnectionPool() {
         init();
@@ -53,22 +54,29 @@ public class ConnectionPool {
         try {
             properties.load(this.getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE_PATH));
         } catch (IOException e) {
-            logger.log(Level.ERROR, "Cant load properties file!");
-            e.printStackTrace();
+            throw new RuntimeException("Can`t load properties file!", e);
         }
         int poolSize = Integer.parseInt(properties.getProperty(PROPERTIES_POOL_SIZE));
         String url = properties.getProperty(PROPERTIES_URL);
         connections = new ArrayBlockingQueue<>(poolSize);
+
+        try {
+            DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+        } catch (SQLException e) {
+            throw new RuntimeException("Can`t register driver!",e);
+        }
+
         while (connections.size() < poolSize) {
             Connection connection = null;
             try {
-                DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 connection = DriverManager.getConnection(url, properties);
             } catch (SQLException e) {
-                logger.log(Level.ERROR, "Cant create connection!");
-                e.printStackTrace();
+                logger.log(Level.ERROR, "Can`t create connection!");///logger?????????
             }
             connections.offer(new ProxyConnection(connection));
+        }
+        if(connections.size()< MIN_CONNECTION_SIZE){
+            throw new RuntimeException("There is not enough connections!");
         }
     }
 
@@ -78,8 +86,7 @@ public class ConnectionPool {
         try {
             connection = connections.take();
         } catch (InterruptedException e) {
-            logger.log(Level.ERROR, "There is not free connection! Wait!");
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
         return connection;
     }
@@ -91,13 +98,11 @@ public class ConnectionPool {
             }
         } catch (SQLException e) {
             logger.log(Level.ERROR, "Problems with connection.");
-            e.printStackTrace();
         }
         try {
             connections.put(connection);
         } catch (InterruptedException e) {
-            logger.log(Level.ERROR, "Problems with connection. Cant put it in connectionPool");
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 
@@ -115,11 +120,9 @@ public class ConnectionPool {
 
                 } catch (SQLException e) {
                     logger.log(Level.ERROR, "Problems with destroy connection or driver!");
-                    e.printStackTrace();
                 }
             } catch (InterruptedException e) {
-                logger.log(Level.ERROR, "ConnectionPool has not connections!");
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
 
         }

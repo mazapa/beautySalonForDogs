@@ -1,6 +1,5 @@
 package by.ryazantseva.salon.command;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -13,14 +12,13 @@ public class ActionFactory {
         Command command = new EmptyCommand();
         String action = request.getParameter("command");
         if (action == null || action.isEmpty()) {
-            //искл
-            logger.log(Level.ERROR, "Wrong command!");
+            throw new RuntimeException("Wrong command!");
         }
         try {
             CommandType currentCommandType = CommandType.valueOf(action.toUpperCase());
             command = currentCommandType.getCurrentCommand();
         } catch (IllegalArgumentException e) {
-            logger.log(Level.ERROR, "Wrong command!");
+            throw new RuntimeException("Wrong command!");
         }
         return command;
     }

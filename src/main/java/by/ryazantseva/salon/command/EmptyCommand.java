@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class EmptyCommand implements Command {
 
-    public static final String EMPTY_STRING = "";
+    private static final String EMPTY_STRING = "";
 
     @Override
     public String execute(HttpServletRequest request) {

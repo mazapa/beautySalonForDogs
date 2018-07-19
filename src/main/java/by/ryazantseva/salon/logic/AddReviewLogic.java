@@ -1,11 +1,11 @@
 package by.ryazantseva.salon.logic;
-import by.ryazantseva.salon.dao.UserDAO;
+import by.ryazantseva.salon.dao.impl.UserDao;
 import by.ryazantseva.salon.entity.User;
 
 public class AddReviewLogic {
     public boolean addReview(User user, String review) {
         if (review != null && !review.isEmpty()) {
-            UserDAO dao = new UserDAO();
+            UserDao dao = new UserDao();
             dao.addReview(user,review);
             return  true;
         }

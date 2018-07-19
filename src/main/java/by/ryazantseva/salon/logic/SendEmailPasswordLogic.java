@@ -1,10 +1,8 @@
 package by.ryazantseva.salon.logic;
 
-import by.ryazantseva.salon.dao.UserDAO;
+import by.ryazantseva.salon.dao.impl.UserDao;
 import by.ryazantseva.salon.validation.PasswordGenerator;
 import by.ryazantseva.salon.validation.PasswordGeneratorBuilder;
-
-import java.util.Random;
 
 public class SendEmailPasswordLogic {
 
@@ -12,7 +10,7 @@ public class SendEmailPasswordLogic {
     public static final int MAX_PASSWORD_LENGTH = 10;
 
     public boolean sendPassword(String email) {
-        UserDAO dao = new UserDAO();
+        UserDao dao = new UserDao();
         if(dao.checkUniqueEmail(email)){
         }
 

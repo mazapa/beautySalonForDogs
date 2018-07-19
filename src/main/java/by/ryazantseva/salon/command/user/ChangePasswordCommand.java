@@ -1,4 +1,4 @@
-package by.ryazantseva.salon.command.standartUserFunction;
+package by.ryazantseva.salon.command.user;
 
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;

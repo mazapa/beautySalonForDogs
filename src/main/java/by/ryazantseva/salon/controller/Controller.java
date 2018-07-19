@@ -22,7 +22,7 @@ public class Controller extends HttpServlet {
         processRequest(request, response);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
         session.setAttribute("login", "guest");
         String page;
@@ -33,7 +33,7 @@ public class Controller extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request,response);
         }else {
-            //error
+            //error page
         }
 
     }

@@ -1,9 +1,7 @@
-package by.ryazantseva.salon.command.standartUserFunction;
+package by.ryazantseva.salon.command.user;
 
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
-import by.ryazantseva.salon.entity.User;
-import by.ryazantseva.salon.logic.LoginLogic;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
