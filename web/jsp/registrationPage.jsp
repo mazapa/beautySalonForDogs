@@ -25,6 +25,12 @@
     <input type="submit" value="registration">
     <br>
 </form>
-    <input type="button" value="back" onClick='location.href="jsp/loginPage.jsp"'>
+
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_LOGIN_PAGE">
+    <br>
+    <input type="submit" value="back">
+    <br>
+</form>
 </body>
 </html>

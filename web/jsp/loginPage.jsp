@@ -5,22 +5,19 @@
 </head>
 <body>
 <form action="/Controller" method="post">
-    <input type="hidden" name="command" value="sign_in">
+    <input type="hidden" name="command" value="login">
     Login:<br>
     <input type="text" name="login" value=""><br>
     Password:<br>
     <input type="password" name="password" value=""><br><br>
     <input type="submit" value="login">
 </form>
-<form>
-    <input type="button" value="registration" onClick='location.href="jsp/registrationPage.jsp"'>
-    <br/>
-    ${errorLoginPassMessage}
-    <br/>
-    ${wrongAction}
-    <br/>
-    ${nullPage}
-    <br/>
+
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_REGISTRATION_PAGE">
+    <br>
+    <input type="submit" value="registration">
+    <br>
 </form>
 
 </body>

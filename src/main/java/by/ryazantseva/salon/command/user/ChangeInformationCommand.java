@@ -19,7 +19,7 @@ public class ChangeInformationCommand implements Command {
     private static final String PHONE_NUMBER = "phoneNumber";
 
     public String execute(HttpServletRequest request) {
-        String page = PageConstant.SIGN_IN_PAGE;
+        String page = PageConstant.LOGIN_PAGE;
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(CURRENT_SESSION_USER);
         if (user != null) {

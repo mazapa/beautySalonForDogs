@@ -4,6 +4,6 @@
     <title>$Title$</title>
 </head>
 <body>
-<jsp:forward page="/jsp/signInPage.jsp"/>
+<jsp:forward page="/jsp/loginPage.jsp"/>
 </body>
 </html>

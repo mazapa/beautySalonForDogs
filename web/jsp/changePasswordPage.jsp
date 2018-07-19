@@ -17,8 +17,11 @@
     <input type="submit" value="change">
     <br>
 </form>
-<form>
-    <input type="button" value="back" onClick='location.href="jsp/startPage.jsp"'>
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_welcome_PAGE">
+    <br>
+    <input type="submit" value="main">
+    <br>
 </form>
 </body>
 </html>

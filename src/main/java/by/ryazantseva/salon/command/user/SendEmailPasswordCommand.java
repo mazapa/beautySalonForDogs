@@ -10,7 +10,7 @@ public class SendEmailPasswordCommand implements Command {
     public static final String SEND_FROM = "ulyasha_97@mail.ru";
 
     public String execute(HttpServletRequest request) {
-        String page = PageConstant.SIGN_IN_PAGE;
+        String page = PageConstant.LOGIN_PAGE;
         String email = request.getParameter("email");
 
 

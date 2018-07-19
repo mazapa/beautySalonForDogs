@@ -1,5 +1,6 @@
 package by.ryazantseva.salon.command;
 
+import by.ryazantseva.salon.command.page.*;
 import by.ryazantseva.salon.command.user.*;
 
 public enum  CommandType {
@@ -28,6 +29,39 @@ public enum  CommandType {
    CHANGE_INFORMATION {
         {
             this.command = new ChangeInformationCommand();
+        }
+    },
+   SHOW_CHANGE_PASSWORD_PAGE {
+        {
+            this.command = new ShowChangePasswordPageCommand();
+        }
+    },
+   SHOW_CHANGE_INFORMATION_PAGE {
+        {
+            this.command = new ShowChangeInformationPageCommand();
+        }
+    },
+   SHOW_REGISTRATION_PAGE {
+        {
+            this.command = new ShowRegistrationPageCommand();
+        }
+    },
+
+   SHOW_REVIEW_PAGE {
+        {
+            this.command = new ShowReviewPageCommand();
+        }
+    },
+
+   SHOW_ERROR_PAGE {
+        {
+            this.command = new ShowErrorPageCommand();
+        }
+    },
+
+   SHOW_LOGIN_PAGE {
+        {
+            this.command = new ShowLoginPageCommand();
         }
     },
 

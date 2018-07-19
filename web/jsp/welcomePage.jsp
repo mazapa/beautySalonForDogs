@@ -12,14 +12,35 @@
 </head>
 <body>
 Hello!
-<input type="button" value="change password" onClick='location.href="jsp/changePasswordPage.jsp"'>
-<input type="button" value="change info" onClick='location.href="jsp/changeInformationPage.jsp"'>
-<input type="button" value="add review" onClick='location.href="jsp/addReviewPage.jsp"'>
+
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_REVIEW_PAGE">
+    <br>
+    <input type="submit" value="add review">
+    <br>
+</form>
+
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_CHANGE_INFORMATION_PAGE">
+    <br>
+    <input type="submit" value="change information">
+    <br>
+</form>
+
+<form action="/Controller" method="post">
+    <input type="hidden" name="command" value="SHOW_CHANGE_PASSWORD_PAGE">
+    <br>
+    <input type="submit" value="change password">
+    <br>
+</form>
+
+
 <form action="/Controller" method="post">
     <input type="hidden" name="command" value="logout">
     <br>
     <input type="submit" value="sign out">
     <br>
 </form>
+
 </body>
 </html>

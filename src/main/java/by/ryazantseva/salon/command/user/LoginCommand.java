@@ -15,7 +15,7 @@ public class LoginCommand implements Command {
     private static final String CURRENT_SESSION_USER = "currentSessionUser";
 
     public String execute(HttpServletRequest request) {
-        String page = PageConstant.SIGN_IN_PAGE;
+        String page = PageConstant.LOGIN_PAGE;
         LoginLogic logic = new LoginLogic();
         String login = request.getParameter(LOGIN_PARAMETER);
         String password = request.getParameter(PASSWORD);
