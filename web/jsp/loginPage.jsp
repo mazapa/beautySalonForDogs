@@ -10,7 +10,7 @@
     <input type="text" name="login" value=""><br>
     Password:<br>
     <input type="password" name="password" value=""><br><br>
-    <input type="submit" value="sign in">
+    <input type="submit" value="login">
 </form>
 <form>
     <input type="button" value="registration" onClick='location.href="jsp/registrationPage.jsp"'>

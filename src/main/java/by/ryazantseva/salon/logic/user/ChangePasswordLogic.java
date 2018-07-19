@@ -13,9 +13,9 @@ public class ChangePasswordLogic {
         oldPassword = EncryptPassword.sha1(oldPassword);
         if (user.getPassword().equals(oldPassword)) {
             if (UserDataValidation.checkPassword(newPassword) && UserDataValidation.checkPasswordEquals(newPassword, repeatNewPassword)) {
-                user.setPassword(newPassword);
                 UserDao dao = new UserDao();
                 try {
+                    user.setPassword(newPassword);
                     dao.update(user);
                 } catch (DaoException e) {
                     throw new LogicException("Can't change password",e);

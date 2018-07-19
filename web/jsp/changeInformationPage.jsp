@@ -20,7 +20,7 @@
     <br>
 </form>
 <form>
-    <input type="button" value="back" onClick='location.href="jsp/signInPage.jsp"'>
+    <input type="button" value="back" onClick='location.href="jsp/loginPage.jsp"'>
 </form>
 </body>
 </html>

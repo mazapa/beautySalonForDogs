@@ -25,9 +25,6 @@ public class LoginCommand implements Command {
                 User user = logic.getUser();
                 session.setAttribute(CURRENT_SESSION_USER, user);
                 page = PageConstant.WELCOME_PAGE;
-    ////////////////////////////
-                System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
-    ///////////////////////////////
             }
         } catch (LogicException e) {
             page = PageConstant.ERROR_PAGE;

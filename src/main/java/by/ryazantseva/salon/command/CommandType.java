@@ -3,13 +3,13 @@ package by.ryazantseva.salon.command;
 import by.ryazantseva.salon.command.user.*;
 
 public enum  CommandType {
-    SIGN_IN {
+    LOGIN {
         {
             this.command = new LoginCommand();
         }
-    },SIGN_OUT {
+    },LOGOUT {
         {
-            this.command = new LoginCommand();
+            this.command = new LogoutCommand();
         }
     },SEND_PASSWORD {
         {

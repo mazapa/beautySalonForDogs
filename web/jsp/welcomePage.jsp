@@ -16,7 +16,7 @@ Hello!
 <input type="button" value="change info" onClick='location.href="jsp/changeInformationPage.jsp"'>
 <input type="button" value="add review" onClick='location.href="jsp/addReviewPage.jsp"'>
 <form action="/Controller" method="post">
-    <input type="hidden" name="command" value="sign_out">
+    <input type="hidden" name="command" value="logout">
     <br>
     <input type="submit" value="sign out">
     <br>

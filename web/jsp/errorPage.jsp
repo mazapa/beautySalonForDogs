@@ -12,6 +12,6 @@
 </head>
 <body>
 ERROR
-<input type="button" value="change password" onClick='location.href="jsp/signInPage.jsp"'>
+<input type="button" value="login" onClick='location.href="jsp/loginPage.jsp"'>
 </body>
 </html>

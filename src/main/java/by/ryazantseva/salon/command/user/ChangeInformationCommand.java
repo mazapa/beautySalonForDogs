@@ -31,9 +31,6 @@ public class ChangeInformationCommand implements Command {
             try {
                 if(logic.changeInformation(user,name,surname,email,phoneNumber)){
                     page = PageConstant.WELCOME_PAGE;
-                    //////////////////////
-                    System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getName());
-                    ///////////////////////
                 }
             } catch (LogicException e) {
                 page = PageConstant.ERROR_PAGE;

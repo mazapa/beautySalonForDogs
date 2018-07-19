@@ -22,7 +22,7 @@ public class UserDao extends AbstractUserDao {
     private static final String SQL_UPDATE_USER =
             "UPDATE person SET name = ?, surname = ?, email = ?, phone_number = ?, password = SHA1(?), role = ? WHERE login = ?";
     private static final String SQL_CHECK_UNIQUE_LOGIN =
-            "SELECT id_person, name, surname, email, phone_number, login, password, role FROM person WHERE login = ? ";
+            "SELECT  name, surname, email, phone_number, login, password, role FROM person WHERE login = ? ";
     private static final String SQL_CHECK_UNIQUE_EMAIL =
             "SELECT name, surname, email, phone_number, login, password, role FROM person WHERE email = ? ";
     private static final String SQL_CHECK_UNIQUE_PHONE_NUMBER =
@@ -161,6 +161,7 @@ public class UserDao extends AbstractUserDao {
             prepareStatement.setString(4, user.getPhoneNumber());
             prepareStatement.setString(5, user.getPassword());
             prepareStatement.setString(6, user.getRole());
+            prepareStatement.setString(7, user.getLogin());
             prepareStatement.executeUpdate();
             commitStatement();
         } catch (SQLException e) {

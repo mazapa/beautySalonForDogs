@@ -25,6 +25,6 @@
     <input type="submit" value="registration">
     <br>
 </form>
-    <input type="button" value="back" onClick='location.href="jsp/signInPage.jsp"'>
+    <input type="button" value="back" onClick='location.href="jsp/loginPage.jsp"'>
 </body>
 </html>
