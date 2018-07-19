@@ -3,7 +3,8 @@ package by.ryazantseva.salon.command.user;
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
 import by.ryazantseva.salon.entity.User;
-import by.ryazantseva.salon.logic.RegistrationLogic;
+import by.ryazantseva.salon.exception.LogicException;
+import by.ryazantseva.salon.logic.user.RegistrationLogic;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
@@ -29,14 +30,18 @@ public class RegistrationCommand implements Command {
         String email = request.getParameter(EMAIL);
         String phoneNumber = request.getParameter(PHONE_NUMBER);
         String repeatPass = request.getParameter(REPEAT_PASSWORD);
-        if (logic.addUser(login, password, name, surname, email, phoneNumber, USER, repeatPass)) {
-            User user = logic.getUser();
-            HttpSession session = request.getSession();
-            session.setAttribute(CURRENT_SESSION_USER, user);
-            page = PageConstant.WELCOME_PAGE;
-//////////////////////////
-            System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
-///////////////////////////
+        try {
+            if (logic.addUser(login, password, name, surname, email, phoneNumber, USER, repeatPass)) {
+                User user = logic.getUser();
+                HttpSession session = request.getSession();
+                session.setAttribute(CURRENT_SESSION_USER, user);
+                page = PageConstant.WELCOME_PAGE;
+    //////////////////////////
+                System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
+    ///////////////////////////
+            }
+        } catch (LogicException e) {
+            page = PageConstant.ERROR_PAGE;
         }
         return page;
     }

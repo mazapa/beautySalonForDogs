@@ -14,6 +14,7 @@ public class SendEmailPasswordCommand implements Command {
         String email = request.getParameter("email");
 
 
+
         return page;
     }
 }

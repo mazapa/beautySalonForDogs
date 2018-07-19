@@ -3,7 +3,8 @@ package by.ryazantseva.salon.command.user;
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
 import by.ryazantseva.salon.entity.User;
-import by.ryazantseva.salon.logic.ChangeInformationLogic;
+import by.ryazantseva.salon.exception.LogicException;
+import by.ryazantseva.salon.logic.user.ChangeInformationLogic;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -27,9 +28,15 @@ public class ChangeInformationCommand implements Command {
             String surname = request.getParameter(SURNAME);
             String email = request.getParameter(EMAIL);
             String phoneNumber = request.getParameter(PHONE_NUMBER);
-            if(logic.changeInformation(user,name,surname,email,phoneNumber)){
-                page = PageConstant.WELCOME_PAGE;
-                System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getName());
+            try {
+                if(logic.changeInformation(user,name,surname,email,phoneNumber)){
+                    page = PageConstant.WELCOME_PAGE;
+                    //////////////////////
+                    System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getName());
+                    ///////////////////////
+                }
+            } catch (LogicException e) {
+                page = PageConstant.ERROR_PAGE;
             }
         }
         return page;

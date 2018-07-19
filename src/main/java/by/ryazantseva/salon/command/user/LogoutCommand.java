@@ -6,7 +6,7 @@ import by.ryazantseva.salon.command.PageConstant;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class SignOutCommand implements Command {
+public class LogoutCommand implements Command {
     private static final String CURRENT_SESSION_USER = "currentSessionUser";
 
     public String execute(HttpServletRequest request) {

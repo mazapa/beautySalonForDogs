@@ -3,7 +3,8 @@ package by.ryazantseva.salon.command.user;
 import by.ryazantseva.salon.command.Command;
 import by.ryazantseva.salon.command.PageConstant;
 import by.ryazantseva.salon.entity.User;
-import by.ryazantseva.salon.logic.ChangePasswordLogic;
+import by.ryazantseva.salon.exception.LogicException;
+import by.ryazantseva.salon.logic.user.ChangePasswordLogic;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,11 +25,16 @@ public class ChangePasswordCommand implements Command {
             String oldPassword = request.getParameter(OLD_PASSWORD);
             String newPassword = request.getParameter(PASSWORD);
             String repeatNewPassword = request.getParameter(REPEAT_PASSWORD);
-            if(logic.changePassword(user,oldPassword,newPassword,repeatNewPassword)){
-                session.setAttribute(CURRENT_SESSION_USER, user);
-                page = PageConstant.WELCOME_PAGE;
-                System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
-
+            try {
+                if(logic.changePassword(user,oldPassword,newPassword,repeatNewPassword)){
+                    session.setAttribute(CURRENT_SESSION_USER, user);
+                    page = PageConstant.WELCOME_PAGE;
+                    //////////////////////
+                    System.out.println(((User) session.getAttribute(CURRENT_SESSION_USER)).getPassword());
+    ///////////////////////////////////////
+                }
+            } catch (LogicException e) {
+                page = PageConstant.ERROR_PAGE;
             }
         }
         return page;

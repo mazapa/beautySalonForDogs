@@ -5,11 +5,11 @@ import by.ryazantseva.salon.command.user.*;
 public enum  CommandType {
     SIGN_IN {
         {
-            this.command = new SignInCommand();
+            this.command = new LoginCommand();
         }
     },SIGN_OUT {
         {
-            this.command = new SignInCommand();
+            this.command = new LoginCommand();
         }
     },SEND_PASSWORD {
         {

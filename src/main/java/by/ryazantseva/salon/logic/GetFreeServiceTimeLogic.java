@@ -1,6 +1,8 @@
 package by.ryazantseva.salon.logic;
 
 import by.ryazantseva.salon.dao.impl.ServiceDao;
+import by.ryazantseva.salon.exception.DaoException;
+import by.ryazantseva.salon.exception.LogicException;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -15,10 +17,14 @@ public class GetFreeServiceTimeLogic {
 
     public static void main(String[] args) {
         GetFreeServiceTimeLogic logic = new GetFreeServiceTimeLogic();
-        logic.findTime("2018-07-12");
+        try {
+            logic.findTime("2018-07-12");
+        } catch (LogicException e) {
+            e.printStackTrace();
+        }
     }
 
-    public boolean findTime(String date) {
+    public boolean findTime(String date) throws LogicException {
         //            java.util.Date tdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2011-05-18 16:29:31");
 //            java.sql.Timestamp timestamp = new java.sql.Timestamp(tdate.getTime());
 //        Date now = new Date();
@@ -40,7 +46,12 @@ public class GetFreeServiceTimeLogic {
         System.out.println("Current Date Time : " + dateFormat.format(calendar.getTime()));
 
         ServiceDao dao = new ServiceDao();
-        List<Timestamp> closeServiceTime = dao.findCloseServiceTime(date);
+        try {
+            List<Timestamp> closeServiceTime = dao.findCloseServiceTime(date);
+        } catch (DaoException e) {
+            throw new LogicException("free service error",e);
+
+        }
         Map<Calendar, Boolean> timetable = new HashMap<>();
 
         for (int i = 0; i < 39; i++) {
