@@ -28,6 +28,12 @@ Hello!
 </form>
 
 <form action="/Controller" method="post">
+    <input type="hidden" name="command" value="get_timetable">
+    <input type="submit" value="get timetable">
+    <br>
+</form>
+
+<form action="/Controller" method="post">
     <input type="hidden" name="command" value="SHOW_CHANGE_PASSWORD_PAGE">
     <br>
     <input type="submit" value="change password">

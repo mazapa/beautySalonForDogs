@@ -1,6 +1,7 @@
 package by.ryazantseva.salon.command;
 
 import by.ryazantseva.salon.command.page.*;
+import by.ryazantseva.salon.command.service.GetFreeServiceTimeCommand;
 import by.ryazantseva.salon.command.user.*;
 
 public enum  CommandType {
@@ -29,6 +30,11 @@ public enum  CommandType {
    CHANGE_INFORMATION {
         {
             this.command = new ChangeInformationCommand();
+        }
+    },
+   GET_TIMETABLE {
+        {
+            this.command = new GetFreeServiceTimeCommand();
         }
     },
    SHOW_CHANGE_PASSWORD_PAGE {

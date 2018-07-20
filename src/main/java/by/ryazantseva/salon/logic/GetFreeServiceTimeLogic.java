@@ -3,6 +3,7 @@ package by.ryazantseva.salon.logic;
 import by.ryazantseva.salon.dao.impl.ServiceDao;
 import by.ryazantseva.salon.exception.DaoException;
 import by.ryazantseva.salon.exception.LogicException;
+import by.ryazantseva.salon.validation.DateValidation;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
@@ -12,53 +13,54 @@ import java.util.*;
 
 public class GetFreeServiceTimeLogic {
     private static final String START_WORKING_DAY_TIME = "8:00:00";
+    private static final String FINISH_WORKING_DAY_TIME = "18:00:00";
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    public static final String SPACE = " ";
+    private static final String SPACE = " ";
+    private static final long ONE_MINUTE_IN_MILLIS = 60000;
+    private static final int DIFFERENCE_BETWEEN_TIME_REGISTRATION = 15;
 
-    public static void main(String[] args) {
-        GetFreeServiceTimeLogic logic = new GetFreeServiceTimeLogic();
-        try {
-            logic.findTime("2018-07-12");
-        } catch (LogicException e) {
-            e.printStackTrace();
+    public boolean findTime(String date, String serviceName) throws LogicException {
+        if (DateValidation.checkDate(date)) {/////////????????????validation
+            DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+            long currentDate;
+            long finishWorkingDate;
+            try {
+                dateFormat.parse(date + SPACE + START_WORKING_DAY_TIME);
+                currentDate = dateFormat.getCalendar().getTimeInMillis();
+                dateFormat.parse(date + SPACE + FINISH_WORKING_DAY_TIME);
+                finishWorkingDate = dateFormat.getCalendar().getTimeInMillis();
+            } catch (ParseException e) {
+                throw new LogicException("Incorrect input date!", e);
+            }
+
+            //////////////////
+            System.out.println("Current Date Time : " + dateFormat.format(currentDate));
+            System.out.println("Current Date Time : " + dateFormat.format(finishWorkingDate));
+            ///////////////////////////
+
+            ServiceDao dao = new ServiceDao();
+            try {
+                List<Long> closeServiceTime = dao.findCloseServiceTime(date);
+                long serviceDuration = dao.findServiceDuration(serviceName);
+                List<Long> timetable = new LinkedList<>();
+
+                while (currentDate <= finishWorkingDate) {
+                    if (!closeServiceTime.contains(currentDate)
+                            && !dao.checkCloseServiceTimeBetweenTime(currentDate, currentDate + ONE_MINUTE_IN_MILLIS * serviceDuration)) {
+                        timetable.add(currentDate);
+                    }
+                    currentDate  = currentDate+ (ONE_MINUTE_IN_MILLIS * DIFFERENCE_BETWEEN_TIME_REGISTRATION);
+                }
+
+                for (long c: timetable) {
+                    System.out.println(dateFormat.format(c));
+                }
+
+            } catch (DaoException e) {
+                throw new LogicException("Cant find free timetable", e);
+            }
+
         }
-    }
-
-    public boolean findTime(String date) throws LogicException {
-        //            java.util.Date tdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2011-05-18 16:29:31");
-//            java.sql.Timestamp timestamp = new java.sql.Timestamp(tdate.getTime());
-//        Date now = new Date();
-//        Timestamp timestamp = new Timestamp(now.getTime());
-//        System.out.println(timestamp.);
-        if (date == null || date.isEmpty()) {
-            //log
-            return false;
-        }
-
-        DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        Calendar calendar = Calendar.getInstance();
-        try {
-            dateFormat.parse(date + SPACE + START_WORKING_DAY_TIME);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            //log
-        }
-        System.out.println("Current Date Time : " + dateFormat.format(calendar.getTime()));
-
-        ServiceDao dao = new ServiceDao();
-        try {
-            List<Timestamp> closeServiceTime = dao.findCloseServiceTime(date);
-        } catch (DaoException e) {
-            throw new LogicException("free service error",e);
-
-        }
-        Map<Calendar, Boolean> timetable = new HashMap<>();
-
-        for (int i = 0; i < 39; i++) {
-
-        }
-
-
         return false;
     }
 

@@ -143,7 +143,7 @@ public class UserDao extends AbstractUserDao {
             prepareStatement.executeUpdate();
             commitStatement();
         } catch (SQLException e) {
-            throw new DaoException("Can`t execute update <<find user>>!",e);
+            throw new DaoException("Can`t execute update <<add user>>!",e);
         } finally {
             if (prepareStatement != null) {
                 closeStatement(prepareStatement);
